@@ -1,11 +1,17 @@
 package fuel.gymgenie.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.util.Date;
 
 @Entity
 @Table(name = "equipments")
+@NoArgsConstructor
+@Getter @Setter @ToString
 public class Equipment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,5 +26,6 @@ public class Equipment {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "type_id", nullable = false)
+    @ToString.Exclude
     private EquipmentType type;
 }

@@ -1,12 +1,18 @@
 package fuel.gymgenie.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "equipment_types")
+@NoArgsConstructor
+@Getter @Setter @ToString
 public class EquipmentType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

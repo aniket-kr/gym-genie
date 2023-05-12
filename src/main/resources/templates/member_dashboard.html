@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+    }
+
+    .container {
+      max-width: 2000px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      font-size: 36px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .section-header h2 {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .section-header a {
+      font-size: 16px;
+      color: #007bff;
+      text-decoration: none;
+      border-bottom: 1px solid #007bff;
+      padding: 2px;
+      border-radius: 3px;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .section-header a:hover {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      font-size: 16px;
+      color: #666;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .table thead {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    .table th,
+    .table td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #f2f2f2;
+    }
+
+    .table th:first-child,
+    .table td:first-child {
+      padding-left: 20px;
+    }
+
+    .table th:last-child,
+    .table td:last-child {
+      padding-right: 20px;
+    }
+
+    .table tr:hover {
+      background-color: #f5f5f5;
+    }
+
+    .membership-details {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .membership-details div {
+      flex-basis: 33.33%;
+      text-align: center;
+    }
+
+    .membership-details h3 {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 0;
+      margin-bottom: 5px;
+    }
+
+    .membership-details p {
+      font-size: 16px;
+      color: #666;
+      margin: 0;
+    }
+
+    .membership-status {
+      margin-bottom: 40px;
+    }
+
+    .membership-status span {
+      display: inline-block;
+      font-size: 16px;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 3px;
+      margin-right: 10px;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .membership-status.active span {
+      background-color: #3498db;
+    }
+
+    .membership-status.inactive span {
+      background-color: #dc3545;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    th {
+      background-color: #3498db;
+      color: white;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #3498db;
+      color: white;
+      height: 80px;
+      padding: 0 20px;
+    }
+
+    nav img.logo {
+      height: 60px;
+      margin-right: 20px;
+    }
+
+    nav h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+
+    nav .profile {
+      display: flex;
+      align-items: center;
+      font-size: 20px;
+    }
+
+    nav .profile p {
+      margin: 0;
+      margin-right: 10px;
+    }
+
+    nav .profile img {
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 20px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <img class="logo" th:src="@{/images/gym_logo.png}" alt="Logo">
+  <h1>ABS Fitness and Gym</h1>
+  <div class="profile">
+    <p>Welcome, John Doe</p>
+    <a href="profile_info.html"><img th:src="@{/images/profile_photo.png}" alt="Profile Picture"></a>
+
+  </div>
+</nav>
+<div class="container">
+  <h1>Customer Membership Dashboard</h1>
+
+  <div class="membership-details">
+    <div>
+      <h3>Membership Type</h3>
+      <p th:text="${membershipTypeName}">Gold</p>
+    </div>
+    <div>
+      <h3>Membership Start Date</h3>
+      <p th:text="${membershipStart}">1 January 2023</p>
+    </div>
+    <div>
+      <h3>Membership End Date</h3>
+      <p th:text="${membershipEnd}">31 December 2023</p>
+    </div>
+  </div>
+
+  <div class="membership-status active">
+    <span>Active</span>
+    <a href="#">Renew Membership</a>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <h2>Billing History</h2>
+      <a href="#">View All</a>
+    </div>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Amount</th>
+        <th>Status</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="membership in ${pastMemberships}">
+        <td th:text="membership.getBeginsOn()">1 January 2023</td>
+        <td>Monthly Membership Fee</td>
+        <td th:text="₹${membership.getType().getPrice()}">$50.00</td>
+        <td>Paid</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <h2>Attendance Status</h2>
+    </div>
+    <div class="attendance-status">
+      <div class="attendance-status-bar">
+        <div class="attendance-status-progress" style="width: 75%;"></div>
+      </div>
+      <div class="attendance-status-labels">
+        <span>Attended: 75%</span><br>
+        <span>Absent: 25%</span>
+      </div>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>Attendance Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>May 1, 2023</td>
+      <td>Present</td>
+    </tr>
+    <tr>
+      <td>May 2, 2023</td>
+      <td>Present</td>
+    </tr>
+    <tr>
+      <td>May 3, 2023</td>
+      <td>Absent</td>
+    </tr>
+    <tr>
+      <td>May 4, 2023</td>
+      <td>Present</td>
+    </tr>
+    <tr>
+      <td>May 5, 2023</td>
+      <td>Absent</td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+</body>
+</html>
+
+
